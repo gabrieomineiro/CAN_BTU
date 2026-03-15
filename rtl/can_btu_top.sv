@@ -1,135 +1,136 @@
 //-----------------------------------------------------------------------------
-// Module: can_btu (Bit Timing Unit)
-// Description: Generates timing signals for CAN bit synchronization
-//              Implements configurable bit timing per CAN specification
-//              Supports hard and soft synchronization with edge detection
-// Author: CAN Controller Project
-// Version: 2.0
+// Módulo: can_btu (Bit Timing Unit)
+// Descrição: Gera sinais de temporização para sincronização de bits CAN
+//            Implementa temporização de bit configurável conforme especificação CAN
+//            Suporta sincronização forte (hard) e suave (soft) com detecção de borda
+// Autor: Gabriel de Lima Pessoa
+// Versão: 1.0
 //-----------------------------------------------------------------------------
 
 module can_btu_top #(
-    parameter int CLK_FREQ_HZ = 50_000_000,  // System clock frequency
-    parameter int BAUD_RATE   = 500_000      // Target CAN baud rate
+    parameter int CLK_FREQ_HZ = 50_000_000,  // Frequência do clock do sistema
+    parameter int BAUD_RATE   = 500_000      // Taxa de transmissão CAN alvo
 )(
-    input  logic        clk,           // System clock
-    input  logic        rst_n,         // Active-low reset
+    input  logic        clk,           // Clock do sistema
+    input  logic        rst_n,         // Reset ativo baixo
     
-    // Configuration inputs
-    input  logic [7:0]  prescaler,     // Baud rate prescaler (1-256)
-    input  logic [2:0]  prop_seg,      // Propagation segment (1-8 time quanta)
-    input  logic [2:0]  phase_seg1,    // Phase segment 1 (1-8 time quanta)
-    input  logic [2:0]  phase_seg2,    // Phase segment 2 (2-8 time quanta)
-    input  logic [1:0]  sjw,           // Synchronization jump width (1-4 time quanta)
+    // Entradas de configuração
+    input  logic [7:0]  prescaler,     // Prescaler da taxa de transmissão (1-256)
+    input  logic [2:0]  prop_seg,      // Segmento de propagação (1-8 quantum de tempo)
+    input  logic [2:0]  phase_seg1,    // Segmento de fase 1 (1-8 quantum de tempo)
+    input  logic [2:0]  phase_seg2,    // Segmento de fase 2 (2-8 quantum de tempo)
+    input  logic [1:0]  sjw,           // Largura do salto de sincronização (1-4 quantum de tempo)
     
-    // CAN bus input for edge detection
-    input  logic        can_rx,        // CAN receive line
+    // Entrada do barramento CAN para detecção de borda
+    input  logic        can_rx,        // Linha de recepção CAN
     
-    // Synchronization inputs
-    input  logic        sync_en,       // Enable synchronization
-    input  logic        hard_sync,     // Hard synchronization request
+    // Entradas de sincronização
+    input  logic        sync_en,       // Habilita sincronização
+    input  logic        hard_sync,     // Requisição de sincronização forte (hard sync)
     
-    // Timing outputs
-    output logic        bit_tick,      // Pulse at each bit time
-    output logic        sample_tick,   // Pulse at sample point
-    output logic        tx_tick,       // Pulse at transmission point
-    output logic        sample_point,  // High during sample phase
+    // Saídas de temporização
+    output logic        bit_tick,      // Pulso a cada tempo de bit
+    output logic        sample_tick,   // Pulso no ponto de amostragem
+    output logic        tx_tick,       // Pulso no ponto de transmissão
+    output logic        sample_point,  // Alto durante a fase de amostragem
     
-    // Status outputs
-    output logic [7:0]  bit_time_cnt,  // Current bit time counter
-    output logic        sync_locked,   // Synchronization locked
-    output logic        edge_detected, // Edge detected flag (for monitoring)
-    output logic        sync_active    // Synchronization in progress
+    // Saídas de status
+    output logic [7:0]  bit_time_cnt,  // Contador atual do tempo de bit
+    output logic        sync_locked,   // Sincronização estabelecida (locked)
+    output logic        edge_detected, // Flag de borda detectada (para monitoramento)
+    output logic        sync_active    // Sincronização em andamento
 );
 
     //-----------------------------------------------------------------------------
-    // Internal Signals
+    // Sinais Internos
     //-----------------------------------------------------------------------------
     
-    // Time quantum counter
-    logic [7:0] tq_counter;
-    logic [4:0] tq_limit;          // Changed to 5 bits to handle max 22 TQ
+    // Contador de quantum de tempo
+    logic [7:0] tq_counter;           // Contador de TQ
+    logic [4:0] tq_limit;              // Limite de TQ (agora com 5 bits para lidar com máx 22 TQ)
     
-    // Calculated timing values (5 bits to handle max 22 TQ)
-    logic [4:0] sample_tq_base;    // Base time quanta count for sample point
-    logic [4:0] sample_tq_adj;     // Adjusted sample point for synchronization
-    logic [4:0] tx_tq;             // Time quanta count for TX point
-    logic [4:0] total_tq_base;     // Base total time quanta per bit
-    logic [4:0] total_tq_adj;      // Adjusted total for synchronization
+    // Valores de temporização calculados (5 bits para lidar com máx 22 TQ)
+    logic [4:0] sample_tq_base;        // Contagem base de TQ para ponto de amostragem
+    logic [4:0] sample_tq_adj;         // Ponto de amostragem ajustado para sincronização
+    logic [4:0] tx_tq;                  // Contagem de TQ para ponto de TX
+    logic [4:0] total_tq_base;          // Total base de TQ por bit
+    logic [4:0] total_tq_adj;           // Total ajustado para sincronização
     
-    // Prescaler counter
-    logic [7:0] presc_counter;
-    logic [7:0] prescaler_safe;    // Protected prescaler value
-    logic       presc_tick;
+    // Contador do prescaler
+    logic [7:0] presc_counter;          // Contador do prescaler
+    logic [7:0] prescaler_safe;         // Valor protegido do prescaler
+    logic       presc_tick;              // Pulso do prescaler (tick)
     
-    // Synchronization state
+    // Estado da sincronização
     typedef enum logic [1:0] {
-        SYNC_IDLE,
-        SYNC_WAIT_EDGE,
-        SYNC_ADJUSTING,
-        SYNC_COMPLETE
+        SYNC_IDLE,                       // Sincronização ociosa
+        SYNC_WAIT_EDGE,                   // Aguardando borda
+        SYNC_ADJUSTING,                    // Ajustando
+        SYNC_COMPLETE                       // Sincronização completa
     } sync_state_t;
     
-    sync_state_t sync_state;
+    sync_state_t sync_state;              // Estado atual da sincronização
     
-    // Phase adjustment registers
-    logic [3:0] phase_seg1_adj;    // Adjusted phase_seg1 (4 bits for overflow)
-    logic [3:0] phase_seg2_adj;    // Adjusted phase_seg2 (4 bits for underflow)
-    logic       sync_done;
-    logic       phase_adjusted;    // Flag indicating phase was adjusted
+    // Registradores de ajuste de fase
+    logic [3:0] phase_seg1_adj;            // phase_seg1 ajustado (4 bits para overflow)
+    logic [3:0] phase_seg2_adj;            // phase_seg2 ajustado (4 bits para underflow)
+    logic       sync_done;                  // Sincronização concluída
+    logic       phase_adjusted;              // Flag indicando que a fase foi ajustada
     
-    // Edge detection
-    logic       prev_bus_value;
-    logic       edge_detected_int; // Internal edge detection signal
-    logic [3:0] phase_error;       // Phase error magnitude
+    // Detecção de borda
+    logic       prev_bus_value;              // Valor anterior do barramento
+    logic       edge_detected_int;            // Sinal interno de detecção de borda
+    logic [3:0] phase_error;                  // Magnitude do erro de fase
     
     //-----------------------------------------------------------------------------
-    // Input Protection
+    // Proteção das Entradas
     //-----------------------------------------------------------------------------
     
-    // Protect against zero prescaler
+    // Protege contra prescaler zero
     assign prescaler_safe = (prescaler == 8'd0) ? 8'd1 : prescaler;
     
     //-----------------------------------------------------------------------------
-    // Calculate Timing Parameters
+    // Cálculo dos Parâmetros de Temporização
     //-----------------------------------------------------------------------------
     
-    // Total time quanta per bit = 1 (sync) + prop_seg + phase_seg1 + phase_seg2
-    // Note: prop_seg, phase_seg1, phase_seg2 are 3-bit but represent 1-8 values
-    // Maximum: 1 + 8 + 8 + 8 = 25 TQ (fits in 5 bits)
+    // Total de quantum de tempo por bit = 1 (sync) + prop_seg + phase_seg1 + phase_seg2
+    // Nota: prop_seg, phase_seg1, phase_seg2 têm 3 bits mas representam valores 1-8
+    // Máximo: 1 + 8 + 8 + 8 = 25 TQ (cabe em 5 bits)
+    
     assign total_tq_base = 5'd1 + {2'b0, prop_seg} + {2'b0, phase_seg1} + {2'b0, phase_seg2};
     
-    // Sample point is after sync + prop_seg + phase_seg1
+    // Ponto de amostragem é após sync + prop_seg + phase_seg1
     assign sample_tq_base = 5'd1 + {2'b0, prop_seg} + {2'b0, phase_seg1};
     
-    // TX point is at the end of sync segment (beginning of bit)
+    // Ponto de TX é no final do segmento de sincronização (início do bit)
     assign tx_tq = 5'd1;
     
-    // Adjusted timing values based on synchronization
+    // Valores de temporização ajustados baseados na sincronização
     assign sample_tq_adj = 5'd1 + {2'b0, prop_seg} + phase_seg1_adj;
     assign total_tq_adj = 5'd1 + {2'b0, prop_seg} + phase_seg1_adj + phase_seg2_adj;
     
-    // TQ limit for counter (use adjusted value when synchronizing)
+    // Limite do contador de TQ (usa valor ajustado quando sincronizando)
     assign tq_limit = phase_adjusted ? (total_tq_adj - 5'd1) : (total_tq_base - 5'd1);
     
     //-----------------------------------------------------------------------------
-    // Edge Detection
+    // Detecção de Borda
     //-----------------------------------------------------------------------------
     
-    // Detect falling edge (recessive to dominant) for synchronization
-    // CAN bus uses dominant (0) and recessive (1) states
-    // A falling edge indicates a potential synchronization point
+    // Detecta borda de descida (recessivo para dominante) para sincronização
+    // Barramento CAN usa estados dominante (0) e recessivo (1)
+    // Uma borda de descida indica um ponto potencial de sincronização
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            prev_bus_value    <= 1'b1;  // Default to recessive
+            prev_bus_value    <= 1'b1;  // Padrão: recessivo
             edge_detected_int <= 1'b0;
         end else begin
             prev_bus_value    <= can_rx;
-            // Detect falling edge (recessive -> dominant)
+            // Detecta borda de descida (recessivo -> dominante)
             edge_detected_int <= prev_bus_value && !can_rx;
         end
     end
     
-    // Output edge detection status
+    // Saída do status de detecção de borda
     assign edge_detected = edge_detected_int;
     
     //-----------------------------------------------------------------------------
@@ -152,7 +153,7 @@ module can_btu_top #(
     end
     
     //-----------------------------------------------------------------------------
-    // Time Quantum Counter
+    // Contador de Quantum de Tempo
     //-----------------------------------------------------------------------------
     
     always_ff @(posedge clk or negedge rst_n) begin
@@ -160,7 +161,7 @@ module can_btu_top #(
             tq_counter <= 8'd0;
         end else if (presc_tick) begin
             if (hard_sync) begin
-                // Hard sync: restart from beginning
+                // Sincronização forte: reinicia do início
                 tq_counter <= 8'd0;
             end else if (tq_counter >= {3'b0, tq_limit}) begin
                 tq_counter <= 8'd0;
@@ -171,10 +172,10 @@ module can_btu_top #(
     end
     
     //-----------------------------------------------------------------------------
-    // Synchronization State Machine
+    // Máquina de Estados de Sincronização
     //-----------------------------------------------------------------------------
     
-    // Calculate phase error
+    // Calcula o erro de fase
     always_comb begin
         if (tq_counter < {3'b0, sample_tq_base}) begin
             phase_error = {1'b0, sample_tq_base[3:0]} - {1'b0, tq_counter[3:0]};
@@ -183,7 +184,7 @@ module can_btu_top #(
         end
     end
     
-    // Synchronization state machine
+    // Máquina de estados de sincronização
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             sync_state     <= SYNC_IDLE;
@@ -193,7 +194,7 @@ module can_btu_top #(
             phase_adjusted <= 1'b0;
             sync_active    <= 1'b0;
         end else begin
-            // Default: reset adjustments at start of new bit
+            // Padrão: reinicia ajustes no início de um novo bit
             if (presc_tick && tq_counter == 8'd0 && !hard_sync) begin
                 phase_seg1_adj <= {1'b0, phase_seg1};
                 phase_seg2_adj <= {1'b0, phase_seg2};
@@ -205,7 +206,7 @@ module can_btu_top #(
                 case (sync_state)
                     SYNC_IDLE: begin
                         if (hard_sync) begin
-                            // Hard sync: reset phase adjustments
+                            // Sincronização forte: reinicia ajustes de fase
                             phase_seg1_adj <= {1'b0, phase_seg1};
                             phase_seg2_adj <= {1'b0, phase_seg2};
                             sync_done      <= 1'b1;
@@ -218,10 +219,10 @@ module can_btu_top #(
                     end
                     
                     SYNC_WAIT_EDGE: begin
-                        // Process the edge and calculate adjustment
+                        // Processa a borda e calcula o ajuste
                         if (tq_counter < {3'b0, sample_tq_base}) begin
-                            // Phase error: edge before sample point, lengthen phase_seg1
-                            // Limit adjustment to SJW
+                            // Erro de fase: borda antes do ponto de amostragem, alonga phase_seg1
+                            // Limita o ajuste ao SJW
                             if (phase_error <= {2'b0, sjw}) begin
                                 phase_seg1_adj <= {1'b0, phase_seg1} + phase_error[2:0];
                             end else begin
@@ -229,8 +230,8 @@ module can_btu_top #(
                             end
                             phase_seg2_adj <= {1'b0, phase_seg2};
                         end else begin
-                            // Phase error: edge after sample point, shorten phase_seg2
-                            // Limit adjustment to SJW
+                            // Erro de fase: borda após o ponto de amostragem, encurta phase_seg2
+                            // Limita o ajuste ao SJW
                             if (phase_error <= {2'b0, sjw}) begin
                                 phase_seg2_adj <= {1'b0, phase_seg2} - phase_error[2:0];
                             end else begin
@@ -243,13 +244,13 @@ module can_btu_top #(
                     end
                     
                     SYNC_ADJUSTING: begin
-                        // Wait for the adjusted timing to take effect
+                        // Aguarda a nova temporização ajustada entrar em vigor
                         sync_done  <= 1'b1;
                         sync_state <= SYNC_COMPLETE;
                     end
                     
                     SYNC_COMPLETE: begin
-                        // Synchronization complete, wait for next bit
+                        // Sincronização completa, aguarda próximo bit
                         sync_active <= 1'b0;
                         if (presc_tick && tq_counter == 8'd0) begin
                             sync_state <= SYNC_IDLE;
@@ -265,10 +266,10 @@ module can_btu_top #(
     end
     
     //-----------------------------------------------------------------------------
-    // Output Generation
+    // Geração das Saídas
     //-----------------------------------------------------------------------------
     
-    // Bit tick: pulse at start of each bit (TQ = 0)
+    // Bit tick: pulso no início de cada bit (TQ = 0)
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             bit_tick <= 1'b0;
@@ -279,21 +280,21 @@ module can_btu_top #(
         end
     end
     
-    // Sample tick: pulse at sample point
-    // Uses adjusted sample point when synchronization is active
+    // Sample tick: pulso no ponto de amostragem
+    // Usa o ponto de amostragem ajustado quando a sincronização está ativa
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             sample_tick <= 1'b0;
         end else if (presc_tick) begin
             if (phase_adjusted) begin
-                // Use adjusted sample point
+                // Usa ponto de amostragem ajustado
                 if (tq_counter == {3'b0, sample_tq_adj}) begin
                     sample_tick <= 1'b1;
                 end else begin
                     sample_tick <= 1'b0;
                 end
             end else begin
-                // Use base sample point
+                // Usa ponto de amostragem base
                 if (tq_counter == {3'b0, sample_tq_base}) begin
                     sample_tick <= 1'b1;
                 end else begin
@@ -305,7 +306,7 @@ module can_btu_top #(
         end
     end
     
-    // TX tick: pulse at transmission point (sync segment, TQ = 1)
+    // TX tick: pulso no ponto de transmissão (segmento sync, TQ = 1)
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             tx_tick <= 1'b0;
@@ -316,7 +317,7 @@ module can_btu_top #(
         end
     end
     
-    // Sample point: high during sample phase (from sample point to end of bit)
+    // Sample point: alto durante a fase de amostragem (do ponto de amostragem ao final do bit)
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             sample_point <= 1'b0;
@@ -329,15 +330,15 @@ module can_btu_top #(
         end
     end
     
-    // Bit time counter output
+    // Saída do contador de tempo de bit
     assign bit_time_cnt = tq_counter;
     
-    // Sync locked status: indicates timing is stable
+    // Status de sincronização estabelecida (locked): indica que a temporização está estável
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             sync_locked <= 1'b0;
         end else begin
-            // Locked when we've completed at least one bit or sync
+            // Estabelecida (locked) quando completamos pelo menos um bit ou sincronização
             sync_locked <= sync_done || (tq_counter > 8'd0);
         end
     end
