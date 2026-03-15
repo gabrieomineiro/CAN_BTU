@@ -1,0 +1,13 @@
+  =================
+   Message Summary
+  =================
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|   Id   |Sev |Count|                                                                                      Message Text                                                                                      |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+|MAP-152 |Info|    1|Skipping steps to optimize dynamic power.                                                                                                                                               |
+|POPT-507|Info|    2|Leakage power optimization was enabled, but single Vth class seems to be used as leakage values of the given libraries look too similar.                                                |
+|        |    |     |The tool tries to classify the given libraries into different Vth classes. If the leakage values of the given libraries are too similar, the tool considers all libraries to be of the  |
+|        |    |     | same Vth class and multi-Vth optimization will be limited.                                                                                                                             |
+|RPT-16  |Info|    2|Joules engine is used.                                                                                                                                                                  |
+|SYNTH-8 |Info|    1|Done incrementally optimizing.                                                                                                                                                          |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

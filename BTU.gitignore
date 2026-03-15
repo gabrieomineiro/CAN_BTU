@@ -1,0 +1,33 @@
+# logs
+*.log
+*.history
+
+# simulation
+*.vcd
+*.wlf
+*.fsdb
+
+# synthesis reports
+*.rpt
+*.sdf
+
+# temporary files
+*.tmp
+*.jou
+*.pb
+*.ts
+*.key
+
+# tool generated folders
+xcelium.d/
+Genus Log/
+work/
+build/
+
+# waveform files
+*.shm
+*.trn
+
+# backup files
+*~
+*.bak

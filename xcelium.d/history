@@ -1,0 +1,19 @@
+//
+// File created by:  xrun
+// Do not modify this file
+
+s1::(11Mar2026:18:36:43):( xrun -sv -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s2::(11Mar2026:18:39:51):( xrun -sv -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s3::(11Mar2026:18:40:08):( xrun -sv -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s4::(11Mar2026:18:40:55):( xrun -sv -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s5::(11Mar2026:18:41:46):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s6::(11Mar2026:18:43:51):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s7::(11Mar2026:19:02:12):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s8::(11Mar2026:19:04:14):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s9::(11Mar2026:19:05:26):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s10::(11Mar2026:19:06:36):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s11::(11Mar2026:19:08:09):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s12::(11Mar2026:19:16:09):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s13::(11Mar2026:19:17:11):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s14::(11Mar2026:19:29:11):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )
+s15::(11Mar2026:19:30:54):( xrun -sv -uvm -64bit -access +rwc -f filelist.f -top tb_can_btu -gui )

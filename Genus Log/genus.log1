@@ -1,0 +1,131 @@
+Cadence Genus(TM) Synthesis Solution.
+Copyright 2024 Cadence Design Systems, Inc. All rights reserved worldwide.
+Cadence and the Cadence logo are registered trademarks and Genus is a trademark
+of Cadence Design Systems, Inc. in the United States and other countries.
+
+[19:52:47.360417] Configured Lic search path (22.01-s003): 5280@192.168.2.250
+
+Version: 22.16-s078_1, built Mon Jun 10 10:32:57 PDT 2024
+Options: 
+Date:    Wed Mar 11 19:52:47 2026
+Host:    saitama (x86_64 w/Linux 4.18.0-553.el8_10.x86_64) (1core*36cpus*71physical cpus*INTEL(R) XEON(R) GOLD 6542Y 61440KB) (428744744KB)
+PID:     1436118
+OS:      Red Hat Enterprise Linux Server release 7.9 (Maipo)
+
+Checking out license: Genus_Synthesis
+[19:52:48.034448] Periodic Lic check successful
+[19:52:48.034449] Feature usage summary:
+[19:52:48.034449] Genus_Synthesis
+
+
+
+***********************************************************************************************************
+***********************************************************************************************************
+
+
+
+Finished executable startup (1 second elapsed).
+
+Loading tool scripts...
+Finished loading tool scripts (8 seconds elapsed).
+
+WARNING: This version of the tool is 639 days old.
+@genus:root: 1> source setup_1.tcl
+Sourcing './setup_1.tcl' (Wed Mar 11 19:53:04 -03 2026)...
+#@ Begin verbose source ./setup_1.tcl
+@file(setup_1.tcl) 3: set PROJECT_DIR /prj/ci/workarea/aluno20/BTU
+@file(setup_1.tcl) 5: set LIB_DIR /pdk/gpdk045/gsclib045_svt_v4.7/gsclib045/timing
+@file(setup_1.tcl) 7: set LEF_DIR /pdk/gpdk045/gsclib045_svt_v4.7/gsclib045/lef
+@file(setup_1.tcl) 9: set HDL_NAME "can_btu_top"
+@file(setup_1.tcl) 11: set HDL_FILES "synth.f"
+@file(setup_1.tcl) 14: set WORST_LIST {slow_vdd1v0_basicCells.lib} 
+@file(setup_1.tcl) 16: set BEST_LIST {fast_vdd1v2_basicCells.lib} 
+@file(setup_1.tcl) 18: set LEF_LIST {gsclib045_tech.lef gsclib045_macro.lef}
+@file(setup_1.tcl) 22: set_db hdl_search_path "${PROJECT_DIR}"
+Warning : This attribute will be obsolete in a next major release. [TUI-32]
+        : attribute: 'hdl_search_path', object type: 'root'
+        : Attribute 'hdl_search_path' is going to be obsoleted, use the new attribute 'init_hdl_search_path'.
+  Setting attribute of root '/': 'hdl_search_path' = /prj/ci/workarea/aluno20/BTU
+@file(setup_1.tcl) 24: set_db lib_search_path "${LIB_DIR} ${LEF_DIR}"
+  Setting attribute of root '/': 'lib_search_path' = /pdk/gpdk045/gsclib045_svt_v4.7/gsclib045/timing /pdk/gpdk045/gsclib045_svt_v4.7/gsclib045/lef
+@file(setup_1.tcl) 26: set_db library "${WORST_LIST}"
+
+  Message Summary for Library slow_vdd1v0_basicCells.lib:
+  *******************************************************
+  Missing a function attribute in the output pin definition. [LBR-518]: 1
+  *******************************************************
+ 
+Info    : Created nominal operating condition. [LBR-412]
+        : Operating condition '_nominal_' was created for the PVT values (1.000000, 0.900000, 125.000000) in library 'slow_vdd1v0_basicCells.lib'.
+        : The nominal operating condition is represented, either by the nominal PVT values specified in the library source (via nom_process,nom_voltage and nom_temperature respectively), or by the default PVT values (1.0,1.0,1.0).
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+        : Add the missing output pin(s), then reload the library. Else the library cell will be marked as timing model i.e. unusable. Timing_model means that the cell does not have any defined function. If there is no output pin, Genus will mark library cell as unusable i.e. the attribute 'usable' will be marked to 'false' on the libcell. Therefore, the cell is not used for mapping and it will not be picked up from the library for synthesis. If you query the attribute 'unusable_reason' on the libcell; result will be: 'Library cell has no output pins.'Note: The message LBR-9 is only for the logical pins and not for the power_ground pins. Genus will depend upon the output function defined in the pin group (output pin) of the cell, to use it for mapping. The pg_pin will not have any function defined.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'ANTENNA' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP10' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP2' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP3' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP4' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP5' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP6' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP7' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP8' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+Warning : Library cell has no output pins defined. [LBR-9]
+        : Library cell 'DECAP9' must have an output pin.
+  Setting attribute of root '/': 'library' = slow_vdd1v0_basicCells.lib
+@file(setup_1.tcl) 28: read_hdl -sv ${HDL_FILES}
+./can_btu_defines.svh
+|
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting a package item. in file '/prj/ci/workarea/aluno20/BTU/synth.f' on line 1, column 1.
+        : Invalid Verilog syntax is parsed, or unsupported Verilog syntax is encountered.
+./can_btu_defines.svh
+ |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting a package item. in file '/prj/ci/workarea/aluno20/BTU/synth.f' on line 1, column 2.
+./can_btu_defines.svh
+                 |
+Error   : Parsing error. [VLOGPT-1] [read_hdl]
+        : Expecting token ';', found '.' in file '/prj/ci/workarea/aluno20/BTU/synth.f' on line 1, column 18.
+./can_btu_defines.svh
+                 |
+Error   : Unexpected end of file. [VLOGPT-11] [read_hdl]
+        : Expecting token ';', reached end of file in file '/prj/ci/workarea/aluno20/BTU/synth.f' on line 1, column 18.
+        : Unexpected end of file encountered.
+#@ End verbose source ./setup_1.tcl
+1
+@genus:root: 2> exit
+
+Lic Summary:
+[19:53:17.485761] Cdslmd servers: licserver
+[19:53:17.485768] Feature usage summary:
+[19:53:17.485769] Genus_Synthesis
+
+Normal exit.

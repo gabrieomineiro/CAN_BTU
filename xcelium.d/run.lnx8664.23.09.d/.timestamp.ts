@@ -1,0 +1,12 @@
+1772494396 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_test.sv
+1772494104 /prj/ci/workarea/aluno20/BTU/can_btu_defines.svh
+1772494264 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_if.sv
+1772494358 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_agent.sv
+1772494406 /prj/ci/workarea/aluno20/BTU/uvm/tb_can_btu.sv
+1772494386 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_env.sv
+1772494346 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_monitor.sv
+1772494372 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_scoreboard.sv
+1772494082 /prj/ci/workarea/aluno20/BTU/can_btu.sv
+1772494332 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_driver.sv
+1772494316 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_sequence.sv
+1772494290 /prj/ci/workarea/aluno20/BTU/uvm/can_btu_seq_item.sv
