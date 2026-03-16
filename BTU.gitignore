@@ -31,3 +31,14 @@ build/
 # backup files
 *~
 *.bak
+
+# Logs e bancos de dados de simulação
+*.log
+*.vcd
+*.shm/
+temp/xcelium.d/
+temp/.simvision/
+temp/waves.shm/
+*.history
+*.key
+*.tstamp

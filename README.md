@@ -18,7 +18,7 @@ Este repositório contém o desenvolvimento completo da BTU, desde sua especific
 
 O repositório reflete um projeto de hardware concluído em sua fase de design e verificação. Abaixo está uma visão geral do que foi feito até agora, organizado pelas pastas e arquivos presentes:
 
-### `src/` - Código Fonte RTL
+### `rtl/` - Código Fonte RTL
 - **O quê:** Contém os arquivos Verilog com a implementação da BTU.
 - **Feito até agora:** A lógica principal da Unidade de Temporização de Bits foi implementada e sintetizável. Os módulos provavelmente incluem a máquina de estados para geração de bits, os contadores para divisão de clock e a lógica de sincronização.
 
