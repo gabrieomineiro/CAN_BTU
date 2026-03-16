@@ -3,8 +3,8 @@
 ############################################################
 
 # Project parameters
-set PROJ_NAME can_btu
-set TOP_MODULE can_btu
+set PROJ_NAME can_btu_top
+set TOP_MODULE can_btu_top
 set DEVICE GW2AR-LV18QN88C8/I7
 
 set RTL_DIR ../rtl
@@ -21,14 +21,15 @@ create_project $PROJ_NAME $BUILD_DIR -part $DEVICE
 # Add RTL
 ############################################################
 
-add_file -type systemverilog $RTL_DIR/can_btu.sv
+add_file -type systemverilog $RTL_DIR/can_btu_top.sv
 add_file -type systemverilog $RTL_DIR/can_btu_defines.svh
 
 ############################################################
 # Constraints
 ############################################################
 
-add_file -type sdc $CONSTR_DIR/can_btu.sdc
+add_file -type sdc $CONSTR_DIR/can_btu_top.sdc
+#add_file -type sdc $CONSTR_DIR/CAN_BTU_GPT.sdc
 
 ############################################################
 # Top module

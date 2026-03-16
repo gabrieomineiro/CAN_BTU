@@ -1,3 +1,3 @@
-./rtl/can_btu_defines.svh
-./rtl/can_btu.sv
+../rtl/can_btu_defines.svh
+../rtl/can_btu.sv
 
