@@ -13,7 +13,7 @@ set HDL_FILES {can_btu_defines.svh can_btu_top.sv}
 #Biblioteca pessimista
 set WORST_LIST {slow_vdd1v0_basicCells.lib} 
 #Biblioteca otimista
-set BEST_LIST {fast_vdd1v2_basicCells.lib} 
+set BEST_LIST {fast_vdd1v0_basicCells.lib} 
 #Biblioteca fisica
 set LEF_LIST {gsclib045_tech.lef gsclib045_macro.lef}
 

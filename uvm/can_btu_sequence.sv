@@ -149,7 +149,7 @@ class can_btu_boundary_seq extends can_btu_base_seq;
         // Test maximum values
         start_item(item);
         void'(item.randomize() with {
-            prescaler == 256;
+            prescaler == 255;
             prop_seg == 8;
             phase_seg1 == 8;
             phase_seg2 == 8;

@@ -10,6 +10,7 @@ module tb_can_btu;
     // Include all testbench files
     `include "can_btu_seq_item.sv"
     `include "can_btu_sequence.sv"
+    `include "can_btu_coverage_collector.sv"
     `include "can_btu_driver.sv"
     `include "can_btu_monitor.sv"
     `include "can_btu_agent.sv"
@@ -28,7 +29,7 @@ module tb_can_btu;
     can_btu_if btu_if(.clk(clk));
     
     // DUT instance
-    can_btu #(
+    can_btu_top #(
         .CLK_FREQ_HZ(50_000_000),
         .BAUD_RATE(500_000)
     ) DUT (

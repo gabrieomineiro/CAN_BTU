@@ -1,0 +1,10 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-ACCESS
++rwc
+
+tb_can_btu
+-COVERAGE
+all

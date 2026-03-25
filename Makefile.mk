@@ -11,11 +11,12 @@
 GENUS_CMD   ?= genus
 
 # Arquivos de configuração do projeto
-FILELIST_SYNTH  := ./synth.f
+FILELIST_SYNTH  := ./cellist.f
 CONSTRAINTS_SDC := ./constraints/can_btu_top.sdc
+NETLIST_SRC	:= ./rtl/can_btu_top.v
 
 # Script TCL principal que será gerado ou chamado
-GENUS_SCRIPT := ./script/run_genus.tcl
+GENUS_SCRIPT := ./script/setup_1.tcl
 
 # Diretórios de saída para resultados da síntese
 REPORTS_DIR   := ./rpt
@@ -128,3 +129,10 @@ $(GENUS_SCRIPT):
 # Indica que as targets 'run_genus' e '$(GENUS_SCRIPT)' são arquivos a serem considerados
 # (evita conflitos se existirem diretórios com esses nomes)
 .PHONY: run_genus $(GENUS_SCRIPT)
+
+# ==================================================
+# GATE LEVEL
+# ==================================================
+gate_level: 
+
+

@@ -1,0 +1,230 @@
+xrun(64): 23.09-s013: (c) Copyright 1995-2024 Cadence Design Systems, Inc.
+TOOL:	xrun(64)	23.09-s013: Started on Mar 24, 2026 at 20:50:51 -03
+xrun
+	-sv
+	-uvm
+	-uvmhome CDNS-1.2
+	-64bit
+	-access +rwc
+	-f script/simlist.f
+		-incdir uvm
+		rtl/can_btu_defines.svh
+		uvm/can_btu_if.sv
+		rtl/can_btu_top.sv
+		uvm/tb_can_btu.sv
+	-top tb_can_btu
+	-gui
+	-coverage all
+Recompiling... reason: file './uvm/can_btu_env.sv' is newer than expected.
+	expected: Tue Mar 24 18:39:33 2026
+	actual:   Tue Mar 24 20:50:49 2026
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /tools/cadence/XCELIUM2309/tools/methodology/UVM/CDNS-1.2
+file: uvm/tb_can_btu.sv
+	module worklib.tb_can_btu:sv
+		errors: 0, warnings: 0
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+	Top level design units:
+		$unit_0x6aaaead8
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		tb_can_btu
+
+	Extracting FSMs for coverage:
+		worklib.can_btu_top
+			FSM extracted for state register sync_state
+		worklib.tb_can_btu
+	Total FSMs extracted = 1
+	Building instance overlay tables: .................
+        prescaler inside {[1:256]};
+                               |
+xmelab: *W,VALFIT (./uvm/can_btu_seq_item.sv,31|31): Value will not fit in the random variable.
+        prop_seg inside {[1:8]};
+                            |
+xmelab: *W,VALFIT (./uvm/can_btu_seq_item.sv,32|28): Value will not fit in the random variable.
+        phase_seg1 inside {[1:8]};
+                              |
+xmelab: *W,VALFIT (./uvm/can_btu_seq_item.sv,33|30): Value will not fit in the random variable.
+        phase_seg2 inside {[2:8]};  // Phase seg2 minimum is 2
+                              |
+xmelab: *W,VALFIT (./uvm/can_btu_seq_item.sv,34|30): Value will not fit in the random variable.
+        sjw inside {[1:4]};
+                       |
+xmelab: *W,VALFIT (./uvm/can_btu_seq_item.sv,35|23): Value will not fit in the random variable.
+class can_btu_seq_item extends uvm_sequence_item;
+                     |
+xmelab: *W,COVUCC (./uvm/can_btu_seq_item.sv,4|21): Block and Expression coverage types are not supported inside SystemVerilog classes. Use CCF command to enable type-based block and expression control coverage. There may also be other such classes in the design.
+...
+xmelab: *W,COVFDP: FSM description matching across instance of a module for "COVFDM" warning has been moved from elaboration to simulation dumping. To restore old matching behavior, use "set_backward_compat -COVFDM_during_elab". Also, it is recommended to use set_parameterized_module_coverage CCF command to avoid coverage loss due to FSM description difference across instances of a module.
+xmelab: *W,COVFHT: FSM hold transitions (transitions to the current state) are not extracted for any FSM in default mode.
+ Done
+	Enabling instrumentation for coverage types: block expression FSM toggle functional
+xmelab: *W,COVDCL: By default expression coverage is scored only for Verilog logical operators (|| and &&) and VHDL logical operators (OR, AND, NOR, and NAND), and is scored only in condition expressions. To score coverage for other operators and for expressions in other statements, use the "set_expr_coverable_operators" and "set_expr_coverable_statements" coverage configuration file commands with suitable options at elaboration.
+	Generating native compiled code:
+		worklib.can_btu_top:sv <0x6eb6a6ec>
+			streams:  31, words: 22898
+		worklib.tb_can_btu:sv <0x461e1460>
+			streams: 756, words: 943643
+		worklib.cdns_uvm_pkg:sv <0x329b4359>
+			streams: 249, words: 394496
+		worklib.cdns_uvmapi:svp <0x0cec1b10>
+			streams:  27, words: 30300
+		worklib.cdns_assert2uvm_pkg:sv <0x2dd07162>
+			streams:   3, words:  1804
+		worklib.uvm_pkg:sv <0x5826eabc>
+			streams: 5939, words: 9094542
+		worklib.can_btu_if:sv <0x020854dc>
+			streams:  54, words: 38777
+xmelab: *W,COVNOEN: By default, toggle coverage is not supported for systemverilog enumerated nets and variables. To enable toggle coverage of these objects, specify the 'set_toggle_scoring -sv_enum' command in the coverage configuration file.
+	Building instance specific data structures.
+xmelab: *W,CGPIDF: Covergroup "per_instance" option , by default, is set as 0.
+xmelab: *N,COVCGN: Coverage configuration file command "set_covergroup -new_instance_reporting" can be specified to improve the scoping and naming of covergroup instances. It may be noted that subsequent merging of a coverage database saved with this command and a coverage database saved without this command is not allowed.
+xmelab: *W,OBINRGT: (File: ./uvm/can_btu_coverage_collector.sv, Line : 36): Some of the values in bin range '[101 : 256]' of bin 'tb_can_btu.can_btu_coverage::\btu_cg .cp_prescaler.high' are not within the possible values that coverpoint can store. Range will be modified to '[101 : 255]'.
+xmelab: *W,OBINRGT: (File: ./uvm/can_btu_coverage_collector.sv, Line : 40): Some of the values in bin range '[1 : 8]' of bin 'tb_can_btu.can_btu_coverage::\btu_cg .cp_prop_seg.valid' are not within the possible values that coverpoint can store. Range will be modified to '[1 : 7]'.
+xmelab: *W,OBINRGT: (File: ./uvm/can_btu_coverage_collector.sv, Line : 44): Some of the values in bin range '[1 : 8]' of bin 'tb_can_btu.can_btu_coverage::\btu_cg .cp_phase_seg1.valid' are not within the possible values that coverpoint can store. Range will be modified to '[1 : 7]'.
+xmelab: *W,OBINRGT: (File: ./uvm/can_btu_coverage_collector.sv, Line : 48): Some of the values in bin range '[2 : 8]' of bin 'tb_can_btu.can_btu_coverage::\btu_cg .cp_phase_seg2.valid' are not within the possible values that coverpoint can store. Range will be modified to '[2 : 7]'.
+xmelab: *W,OBINRGT: (File: ./uvm/can_btu_coverage_collector.sv, Line : 52): Some of the values in bin range '[1 : 4]' of bin 'tb_can_btu.can_btu_coverage::\btu_cg .cp_sjw.valid' are not within the possible values that coverpoint can store. Range will be modified to '[1 : 3]'.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                       2       2
+		Interfaces:                    1       1
+		Verilog packages:              4       4
+		Registers:                 16641   11807
+		Scalar wires:                 20       -
+		Vectored wires:               15       -
+		Named events:                  4      12
+		Always blocks:                10      10
+		Initial blocks:              342     171
+		Clocking blocks:               2       2
+		Clocking items:               34      34
+		Parallel blocks:              27      28
+		Cont. assignments:             9       9
+		Pseudo assignments:           18       -
+		Assertions:                    3       3
+		Covergroup Instances:          0       1
+		Compilation units:             1       1
+		SV Class declarations:       238     353
+		SV Class specializations:    452     452
+		Process Clocks:                5       1
+	Writing initial simulation snapshot: worklib.tb_can_btu:sv
+xmsim: *W,NOMTDGUI: Multi-Threaded Dumping is disabled for interactive debug mode.
+SVSEED default: 1
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /tools/cadence/XCELIUM2309/tools/xcelium/files/xmsimrc
+xcelium> source /tools/cadence/XCELIUM2309/tools/methodology/UVM/CDNS-1.2/additions/sv/files/tcl/uvm_sim.tcl
+xcelium> run
+xmsim: *E,C58EXE: Coverage database file already exists in the test output directory './cov_work/scope/test', and will not be overwritten. Specify a different name for the test output directory or use the '-covoverwrite' option to overwrite the existing test output directory, and rerun the simulation.
+UVM_INFO /tools/cadence/XCELIUM2309/tools/methodology/UVM/CDNS-1.2/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2 (23.09-s013)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test can_btu_test...
+UVM_INFO uvm/can_btu_test.sv(33) @ 0: uvm_test_top [can_btu_test] Starting CAN BTU tests...
+UVM_INFO uvm/can_btu_test.sv(36) @ 0: uvm_test_top [can_btu_test] Test 1: Normal operation
+SDI/Verilog Transaction Recording Facility Version 23.09-s013
+UVM_INFO uvm/can_btu_sequence.sv(33) @ 0: uvm_test_top.env.agt.seqr@@normal_seq [can_btu_normal_seq] Normal operation sequence
+stop -create -name Randomize -randomize
+Created stop Randomize
+
+UVM_ERROR uvm/can_btu_scoreboard.sv(71) @ 670: uvm_test_top.env.scb [can_btu_scoreboard] bit_tick at wrong time: TQ=1
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 770: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 950: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 970: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 1070: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 1130: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 1210: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 1230: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(77) @ 1270: uvm_test_top.env.scb [can_btu_scoreboard] tx_tick at wrong time: TQ=2
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 1350: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 1370: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 1490: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 1590: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 1730: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 1750: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_INFO uvm/can_btu_test.sv(40) @ 1990: uvm_test_top [can_btu_test] Test 2: Hard synchronization
+UVM_INFO uvm/can_btu_sequence.sv(52) @ 1990: uvm_test_top.env.agt.seqr@@hard_sync_seq [can_btu_hard_sync_seq] Hard sync test sequence
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 2190: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 2290: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 2430: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 2590: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_INFO uvm/can_btu_test.sv(44) @ 2670: uvm_test_top [can_btu_test] Test 3: Edge detection
+UVM_INFO uvm/can_btu_sequence.sv(97) @ 2670: uvm_test_top.env.agt.seqr@@edge_detect_seq [can_btu_edge_detect_seq] Edge detection test sequence
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 2710: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 2910: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 2970: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 3110: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 3130: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 3310: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 3510: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 3710: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 3890: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 3910: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4050: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 4110: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4290: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4310: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 4310: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4330: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4490: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 4510: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 4710: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4810: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4830: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 4850: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 4910: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 5010: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 5110: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 5310: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 5510: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 5710: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 5910: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(71) @ 6010: uvm_test_top.env.scb [can_btu_scoreboard] bit_tick at wrong time: TQ=1
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 6110: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 6170: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 6310: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(105) @ 6510: uvm_test_top.env.scb [can_btu_scoreboard] Falling edge not detected
+UVM_ERROR uvm/can_btu_scoreboard.sv(97) @ 6650: uvm_test_top.env.scb [can_btu_scoreboard] Hard sync did not reset TQ counter
+UVM_INFO uvm/can_btu_test.sv(48) @ 6670: uvm_test_top [can_btu_test] Test 4: Boundary values
+UVM_INFO uvm/can_btu_sequence.sv(136) @ 6670: uvm_test_top.env.agt.seqr@@boundary_seq [can_btu_boundary_seq] Boundary value test sequence
+xmsim: *W,RNDOCS: These constraints and variables contribute to the set of conflicting constraints (view the extended help for this message using 'xmhelp xmsim RNDOCS' for guidelines on how debug the issue):
+
+In ./uvm/can_btu_sequence.sv
+line  152:  ( prescaler == 9'h100 )
+
+
+Variable   Type         Status        Current Value          Source                              
+-------------------------------------------------------------------------------------------------
+prescaler  (bit [7:0])  RANDOM        <unassigned>           ./uvm/can_btu_seq_item.sv ; line 6
+
+
+        void'(item.randomize() with {
+                           |
+xmsim: *W,SVRNDF (./uvm/can_btu_sequence.sv,151|27): The randomize method call failed. The unique id of the failed randomize call is 168.
+Observed simulation time : 6710 NS + 4.
+6710 NS + 4 (stop Randomize: Randomize failure)
+xcelium> xmsim: *E,C58EXE: Coverage database file already exists in the test output directory './cov_work/scope/test', and will not be overwritten. Specify a different name for the test output directory or use the '-covoverwrite' option to overwrite the existing test output directory, and rerun the simulation.
+TOOL:	xrun(64)	23.09-s013: Exiting on Mar 24, 2026 at 20:58:32 -03  (total: 00:07:41)

@@ -1,0 +1,14 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-sv
+-uvm
+-64bit
+-access
++rwc
+-f
+script/simlist.f
+-top
+tb_can_btu
+-gui
