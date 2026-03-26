@@ -50,7 +50,8 @@ module tb_can_btu;
         .bit_time_cnt(btu_if.bit_time_cnt),
         .sync_locked(btu_if.sync_locked),
         .edge_detected(btu_if.edge_detected),
-        .sync_active(btu_if.sync_active)
+        .sync_active(btu_if.sync_active),
+        .fsm_state(btu_if.fsm_state)
     );
     
     // Initial block for UVM configuration and run

@@ -25,6 +25,7 @@ class can_btu_seq_item extends uvm_sequence_item;
     logic            sync_locked;
     logic            edge_detected;
     logic            sync_active;
+    logic [2:0]      fsm_state;  // BTU FSM actual state
     
     // Constraints for valid CAN timing
     constraint valid_timing {
@@ -67,6 +68,7 @@ class can_btu_seq_item extends uvm_sequence_item;
         `uvm_field_int(sync_locked, UVM_DEFAULT)
         `uvm_field_int(edge_detected, UVM_DEFAULT)
         `uvm_field_int(sync_active, UVM_DEFAULT)
+        `uvm_field_int(fsm_state, UVM_DEFAULT)
     `uvm_object_utils_end
     
     function new(string name = "can_btu_seq_item");
@@ -85,7 +87,7 @@ class can_btu_seq_item extends uvm_sequence_item;
     
     // Function to check if item has valid timing
     function bit is_valid_timing();
-        return (prescaler >= 1 && prescaler <= 256) &&
+        return (prescaler >= 1 && prescaler <= 255) &&
                (prop_seg >= 1 && prop_seg <= 8) &&
                (phase_seg1 >= 1 && phase_seg1 <= 8) &&
                (phase_seg2 >= 2 && phase_seg2 <= 8) &&

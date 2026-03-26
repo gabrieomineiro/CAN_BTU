@@ -1,6 +1,5 @@
 //============================================================
-// UVM Coverage Collector for CAN Bit Timing Unit (BTU)
-// Adapted to can_btu_seq_item
+// Coverage Collector for CAN Bit Timing Unit (BTU)
 //============================================================
 
 `ifndef CAN_BTU_COV_SV

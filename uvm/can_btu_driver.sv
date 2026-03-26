@@ -45,6 +45,7 @@ class can_btu_driver extends uvm_driver #(can_btu_seq_item);
             req.sync_locked = vif.drv_cb.sync_locked;
             req.edge_detected = vif.drv_cb.edge_detected;
             req.sync_active = vif.drv_cb.sync_active;
+            req.fsm_state = vif.drv_cb.fsm_state;
             
             `uvm_info(get_type_name(), $sformatf("Driven: prescaler=%0d, prop_seg=%0d", 
                       req.prescaler, req.prop_seg), UVM_HIGH)

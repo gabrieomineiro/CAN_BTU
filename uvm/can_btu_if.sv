@@ -30,6 +30,7 @@ interface can_btu_if(input logic clk);
     logic       sync_locked;
     logic       edge_detected;
     logic       sync_active;
+    logic [2:0] fsm_state; // BTU FSM actual state
     
     // Clocking block for driver (inputs to DUT)
     clocking drv_cb @(posedge clk);
@@ -51,6 +52,7 @@ interface can_btu_if(input logic clk);
         input  sync_locked;
         input  edge_detected;
         input  sync_active;
+        input  fsm_state; 
     endclocking
     
     // Clocking block for monitor (inputs to DUT)
@@ -73,6 +75,7 @@ interface can_btu_if(input logic clk);
         input sync_locked;
         input edge_detected;
         input sync_active;
+        input fsm_state;
     endclocking
     
     // Modports
@@ -90,6 +93,7 @@ interface can_btu_if(input logic clk);
         can_rx = 1'b1;          // Default recessive
         sync_en = 1'b1;         // Enable sync by default
         hard_sync = 1'b0;
+         fsm_state = 3'b000;    //Default fsm_state
     end
     
 endinterface : can_btu_if
