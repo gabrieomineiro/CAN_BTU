@@ -87,7 +87,7 @@ class can_btu_seq_item extends uvm_sequence_item;
     
     // Function to check if item has valid timing
     function bit is_valid_timing();
-        return (prescaler >= 1 && prescaler <= 255) &&
+        return (prescaler >= 1 && prescaler <= 256) &&
                (prop_seg >= 1 && prop_seg <= 8) &&
                (phase_seg1 >= 1 && phase_seg1 <= 8) &&
                (phase_seg2 >= 2 && phase_seg2 <= 8) &&

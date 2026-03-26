@@ -10,7 +10,7 @@ module tb_can_btu;
     // Include all testbench files
     `include "can_btu_seq_item.sv"
     `include "can_btu_sequence.sv"
-    `include "can_btu_coverage_collector.sv"
+    `include "can_btu_coverage.sv"
     `include "can_btu_driver.sv"
     `include "can_btu_monitor.sv"
     `include "can_btu_agent.sv"
