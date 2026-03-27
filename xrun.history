@@ -1,21 +1,22 @@
-s1(24Mar2026:19:10:28):  xrun -64bit -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s2(24Mar2026:19:13:52):  xrun -64bit -uvm -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s3(24Mar2026:19:15:58):  xrun -64bit -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s4(24Mar2026:19:17:13):  xrun -64bit -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s5(24Mar2026:19:18:50):  xrun -64bit +access+rwc -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s6(24Mar2026:19:19:11):  xrun -64bit +access+rwc -define PW_AWARE -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s7(24Mar2026:19:19:25):  xrun -64bit +access+rwc -define PW_AWARE -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s8(24Mar2026:19:21:59):  xrun -64bit +access+rwc -define PW_AWARE -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s9(24Mar2026:19:22:13):  xrun -64bit +access+rwc -define PW_AWARE -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s10(24Mar2026:19:22:45):  xrun -timescale 1ns/1ps -64bit +access+rwc -define PW_AWARE -uvm -uvmhome CDNS-1.2 -f script/cellist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s11(24Mar2026:19:35:36):  xrun -64bit +access+rwc -define PW_AWARE -uvm -uvmhome CDNS-1.2 -f script/simlist.f -top tb_can_btu -sdf_file can_btu_top.sdc -ALLOWREDEFINITION +define+GATE_LEVEL -gui 
-s12(24Mar2026:19:38:34):  xrun -sv -uvm -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui 
-s13(24Mar2026:19:39:00):  xrun -sv -uvm -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui 
-s14(24Mar2026:19:39:35):  xrun -sv -uvm -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui 
-s15(24Mar2026:19:40:06):  xrun -sv -uvm -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui 
-s16(24Mar2026:20:18:36):  xrun -sv -uvm -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui 
-s17(24Mar2026:20:19:12):  xrun -sv -uvm -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui -coverage all 
-s18(24Mar2026:20:45:37):  xrun -sv -uvm -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui -coverage all 
-s19(24Mar2026:20:46:20):  xrun -sv -uvm -uvmhome CDNS-1.2 -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui -coverage all 
-s20(24Mar2026:20:47:47):  xrun -sv -uvm -uvmhome CDNS-1.2 -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui -coverage all 
-s21(24Mar2026:20:50:51):  xrun -sv -uvm -uvmhome CDNS-1.2 -64bit -access +rwc -f script/simlist.f -top tb_can_btu -gui -coverage all 
+s1(26Mar2026:18:32:55):  xrun -timescale 1ns/1ps -sv -uvm +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s2(26Mar2026:18:33:26):  xrun -timescale 1ns/1ps -sv -uvm +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s3(26Mar2026:18:34:01):  xrun -timescale 1ns/1ps -sv +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s4(26Mar2026:18:34:29):  xrun -timescale 1ns/1ps -sv -uvm -uvmhome CDNS-1.2 +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s5(26Mar2026:18:34:47):  xrun -64bit -timescale 1ns/1ps -sv -uvm -uvmhome CDNS-1.2 +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s6(26Mar2026:18:35:33):  xrun -64bit -timescale 1ns/1ps -sv -uvm -uvmhome CDNS-1.2 +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s7(26Mar2026:18:36:10):  xrun -64bit -timescale 1ns/1ps -sv -uvm -uvmhome CDNS-1.2 +access+rwc -gui -f script/cellist.f -top tb_can_btu - 
+s8(26Mar2026:18:36:14):  xrun -64bit -timescale 1ns/1ps -sv -uvm -uvmhome CDNS-1.2 +access+rwc -gui -f script/cellist.f -top tb_can_btu 
+s9(26Mar2026:18:36:21):  xrun -64bit -timescale 1ns/1ps -sv -uvm +access+rwc -gui -f script/cellist.f -top tb_can_btu 
+s10(26Mar2026:18:36:33):  xrun -64bit -timescale 1ns/1ps -sv +access+rwc -gui -f script/cellist.f -top tb_can_btu 
+s11(26Mar2026:18:37:24):  xrun -64bit -timescale 1ns/1ps -sv +access+rwc -gui -f script/cellist.f -top tb_can_btu 
+s12(26Mar2026:18:37:42):  xrun -64bit -timescale 1ns/1ps -sv -uvm -uvmhome CDNS-1.2 +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s13(26Mar2026:18:37:54):  xrun -64bit -timescale 1ns/1ps -sv -uvm +access+rwc -gui -f script/cellist.f -top tb_can_btu -sdc can_btu_top.sdc +define+GATE_LEVEL 
+s14(26Mar2026:18:40:27):  xrun -64bit -uvm -sv +access+rwc -gui -f script/simlist.f -top tb_can_btu -coverage all 
+s15(26Mar2026:18:43:34):  xrun -64bit -uvm -uvmhome CDNS-1.2 -sv +access+rwc -gui -f script/simlist.f -top tb_can_btu -coverage all 
+s16(26Mar2026:18:52:41):  xrun -sv_ms -uvm -uvmhome CDNS-1.2 -f script/simlist.f 
+s17(26Mar2026:18:52:55):  xrun -sv_ms -uvm -uvmhome CDNS-1.2 -f script/simlist.f -gui -coverage all 
+s18(26Mar2026:18:56:07):  xrun -sv_ms -uvm -uvmhome CDNS-1.2 -f script/simlist.f -gui -coverage all 
+s19(26Mar2026:18:56:38):  xrun -sv_ms -uvm -uvmhome CDNS-1.2 -f script/simlist.f -gui -coverage all -access +rwc 
+s20(26Mar2026:18:57:03):  xrun -sv_ms -uvm -uvmhome CDNS-1.2 -f script/simlist.f -coverage all -access +rwc 
+s21(26Mar2026:18:57:14):  xrun -sv_ms -uvm -uvmhome CDNS-1.2 -f script/simlist.f -coverage all -access +rwc -overwrite 
+s22(26Mar2026:18:57:18):  xrun -sv_ms -uvm -uvmhome CDNS-1.2 -f script/simlist.f -coverage all -access +rwc -covoverwrite 

@@ -38,7 +38,8 @@ module can_btu_top #(
     output logic [7:0]  bit_time_cnt,  // Contador atual do tempo de bit
     output logic        sync_locked,   // Sincronização estabelecida (locked)
     output logic        edge_detected, // Flag de borda detectada (para monitoramento)
-    output logic        sync_active    // Sincronização em andamento
+    output logic        sync_active,    // Sincronização em andamento
+    output logic [2:0]	fsm_state
 );
 
     //-----------------------------------------------------------------------------
@@ -111,6 +112,8 @@ module can_btu_top #(
     
     // Limite do contador de TQ (usa valor ajustado quando sincronizando)
     assign tq_limit = phase_adjusted ? (total_tq_adj - 5'd1) : (total_tq_base - 5'd1);
+
+    assign fsm_state = sync_state;
     
     //-----------------------------------------------------------------------------
     // Detecção de Borda

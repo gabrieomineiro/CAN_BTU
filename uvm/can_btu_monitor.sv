@@ -49,10 +49,9 @@ class can_btu_monitor extends uvm_monitor;
             item.sync_locked = vif.mon_cb.sync_locked;
             item.edge_detected = vif.mon_cb.edge_detected;
             item.sync_active = vif.mon_cb.sync_active;
-            item.fsm_state = vif.mon_cb.fsm_state
+            item.fsm_state = vif.mon_cb.fsm_state;
             
-            `uvm_info(get_type_name(), $sformatf("Monitored: bit_tick=%0d, sample_tick=%0d", 
-                      item.bit_tick, item.sample_tick), UVM_HIGH)
+            `uvm_info(get_type_name(), $sformatf("Monitored: bit_tick=%0d, sample_tick=%0d", item.bit_tick, item.sample_tick), UVM_HIGH)
             
             mon_ap.write(item);
         end

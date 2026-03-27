@@ -1,9 +1,0 @@
-# Cadence Genus(TM) Synthesis Solution, Version 22.16-s078_1, built Jun 10 2024 14:32:57
-
-# Date: Tue Mar 24 18:53:33 2026
-# Host: saitama (x86_64 w/Linux 4.18.0-553.el8_10.x86_64) (1core*36cpus*71physical cpus*INTEL(R) XEON(R) GOLD 6542Y 61440KB)
-# OS:   Red Hat Enterprise Linux Server release 7.9 (Maipo)
-
-source /script/setup_1.tcl
-source script/setup_1.tcl
-exit

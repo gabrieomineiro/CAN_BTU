@@ -93,7 +93,7 @@ interface can_btu_if(input logic clk);
         can_rx = 1'b1;          // Default recessive
         sync_en = 1'b1;         // Enable sync by default
         hard_sync = 1'b0;
-         fsm_state = 3'b000;    //Default fsm_state
+        //fsm_state = 3'b000;     //Default fsm_state
     end
     
 endinterface : can_btu_if

@@ -1,6 +1,6 @@
 # ####################################################################
 
-#  Created by Genus(TM) Synthesis Solution 22.16-s078_1 on Wed Mar 11 20:18:09 -03 2026
+#  Created by Genus(TM) Synthesis Solution 22.16-s078_1 on Thu Mar 26 18:28:05 -03 2026
 
 # ####################################################################
 
@@ -21,3 +21,5 @@ set_wire_load_mode "enclosed"
 set_clock_latency  1.0 [get_clocks clock]
 set_clock_uncertainty -setup 2.0 [get_clocks clock]
 set_clock_uncertainty -hold 2.0 [get_clocks clock]
+## List of unsupported SDC commands ##
+set_max_dynamic_power 0.0

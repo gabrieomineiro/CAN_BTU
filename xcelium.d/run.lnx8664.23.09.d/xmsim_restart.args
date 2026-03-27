@@ -8,14 +8,15 @@
 /tools/cadence/XCELIUM2309/tools/methodology/UVM/CDNS-1.2
 -sv_lib
 /tools/cadence/XCELIUM2309/tools/methodology/UVM/CDNS-1.2/additions/sv/lib/64bit/libuvmpli.so
--gui
+-COVOVERWRITE
 -MESSAGES
+-RUN
 -SV_LIB
 /tools/cadence/XCELIUM2309/tools/methodology/UVM/CDNS-1.2/additions/sv/lib/64bit/libuvmdpi.so
 +EMGRLOG
 xrun.log
 -XLSTIME
-1774396251
+1774562238
 -XLKEEP
 -XLMODE
 ./xcelium.d/run.lnx8664.23.09.d
@@ -29,4 +30,4 @@ xrun
 -XLVERSION
 "TOOL:	xrun(64)	23.09-s013"
 -XLNAME
-./xcelium.d/run.lnx8664.23.09.d/saitama_343950
+./xcelium.d/run.lnx8664.23.09.d/saitama_641215

@@ -32,7 +32,7 @@ module tb_can_btu;
     can_btu_top #(
         .CLK_FREQ_HZ(50_000_000),
         .BAUD_RATE(500_000)
-    ) DUT (
+    )DUT (
         .clk(btu_if.clk),
         .rst_n(btu_if.rst_n),
         .prescaler(btu_if.prescaler),

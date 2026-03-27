@@ -1,6 +1,6 @@
 
 #Pasta do RTL
-set PROJECT_DIR /prj/ci/workarea/aluno20/BTU
+set PROJECT_DIR /home/aluno20/CAN_BTU
 #Pasta da Biblioteca de timing
 set LIB_DIR /pdk/gpdk045/gsclib045_svt_v4.7/gsclib045/timing
 #Pasta da Biblioteca fisica
@@ -19,7 +19,7 @@ set LEF_LIST {gsclib045_tech.lef gsclib045_macro.lef}
 
 
 #Set the search paths to the libraries and the HDL files
-set_db hdl_search_path "${PROJECT_DIR}"
+set_db hdl_search_path "${PROJECT_DIR}/rtl"
 
 set_db lib_search_path "${LIB_DIR} ${LEF_DIR}"
 
@@ -33,7 +33,7 @@ set_top_module ${HDL_NAME}
 
 check_design -unresolved ${HDL_NAME}
 
-read_sdc ${PROJECT_DIR}/${HDL_NAME}.sdc
+read_sdc ${PROJECT_DIR}/constraints/${HDL_NAME}.sdc
 
 syn_generic ${HDL_NAME}
 

@@ -41,6 +41,9 @@ add mapped point bit_time_cnt[0] bit_time_cnt[0] -type PO PO
 add mapped point sync_locked sync_locked -type PO PO
 add mapped point edge_detected edge_detected -type PO PO
 add mapped point sync_active sync_active -type PO PO
+add mapped point fsm_state[2] fsm_state[2] -type PO PO
+add mapped point fsm_state[1] fsm_state[1] -type PO PO
+add mapped point fsm_state[0] fsm_state[0] -type PO PO
 
 //inout ports
 
@@ -62,23 +65,23 @@ add mapped point tq_counter[0]/q tq_counter_reg[0]/Q -type DFF DFF
 add mapped point phase_seg1_adj[0]/q phase_seg1_adj_reg[0]/Q -type DFF DFF
 add mapped point phase_seg2_adj[0]/q phase_seg2_adj_reg[0]/Q -type DFF DFF
 add mapped point sample_point/q sample_point_reg/Q -type DFF DFF
-add mapped point presc_counter[3]/q presc_counter_reg[3]/Q -type DFF DFF
+add mapped point presc_counter[1]/q presc_counter_reg[1]/Q -type DFF DFF
 add mapped point presc_counter[2]/q presc_counter_reg[2]/Q -type DFF DFF
 add mapped point presc_counter[4]/q presc_counter_reg[4]/Q -type DFF DFF
-add mapped point presc_counter[1]/q presc_counter_reg[1]/Q -type DFF DFF
-add mapped point presc_counter[7]/q presc_counter_reg[7]/Q -type DFF DFF
-add mapped point sample_tick/q sample_tick_reg/Q -type DFF DFF
-add mapped point presc_counter[5]/q presc_counter_reg[5]/Q -type DFF DFF
+add mapped point presc_counter[3]/q presc_counter_reg[3]/Q -type DFF DFF
 add mapped point presc_counter[0]/q presc_counter_reg[0]/Q -type DFF DFF
+add mapped point sample_tick/q sample_tick_reg/Q -type DFF DFF
+add mapped point presc_counter[7]/q presc_counter_reg[7]/Q -type DFF DFF
 add mapped point presc_counter[6]/q presc_counter_reg[6]/Q -type DFF DFF
+add mapped point presc_counter[5]/q presc_counter_reg[5]/Q -type DFF DFF
 add mapped point presc_tick/q presc_tick_reg/Q -type DFF DFF
 add mapped point sync_state[0]/q sync_state_reg[0]/Q -type DFF DFF
 add mapped point sync_active/q sync_active_reg/Q -type DFF DFF
 add mapped point sync_done/q sync_done_reg/Q -type DFF DFF
 add mapped point phase_adjusted/q phase_adjusted_reg/Q -type DFF DFF
 add mapped point sync_state[1]/q sync_state_reg[1]/Q -type DFF DFF
-add mapped point bit_tick/q bit_tick_reg/Q -type DFF DFF
 add mapped point tx_tick/q tx_tick_reg/Q -type DFF DFF
+add mapped point bit_tick/q bit_tick_reg/Q -type DFF DFF
 add mapped point sync_locked/q sync_locked_reg/Q -type DFF DFF
 add mapped point edge_detected_int/q edge_detected_int_reg/Q -type DFF DFF
 add mapped point prev_bus_value/q prev_bus_value_reg/Q -type DFF DFF

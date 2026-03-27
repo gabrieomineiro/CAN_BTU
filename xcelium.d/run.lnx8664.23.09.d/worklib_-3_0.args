@@ -3,7 +3,6 @@
 // Do not modify this file
 //
 -RUNMODE
--sv
 -INCDIR
 uvm
 -I_INCDIR

@@ -2,17 +2,14 @@
 // File created by:  xrun
 // Do not modify this file
 //
--sv
+-sv_ms
 -uvm
 -uvmhome
 CDNS-1.2
--64bit
--access
-+rwc
 -f
 script/simlist.f
--top
-tb_can_btu
--gui
 -coverage
 all
+-access
++rwc
+-covoverwrite

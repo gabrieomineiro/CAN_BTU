@@ -4,13 +4,13 @@
 //
 -loadpli
 /tools/cadence/XCELIUM2309/tools/methodology/UVM/CDNS-1.2/additions/sv/lib/64bit/libuvmpli.so:uvm_pli_boot
--ACCESS
-+rwc
+-SV_MS
 -COVERAGE
 all
+-ACCESS
++rwc
 -no_analogsolver
 -MESSAGES
-tb_can_btu
 -XLMODE
 ./xcelium.d/run.lnx8664.23.09.d
 -RUNMODE
@@ -20,5 +20,4 @@ tb_can_btu
 ./xcelium.d/run.lnx8664.23.09.d/hdl.var
 -WORK
 worklib
--IRUNHASTOP
 -HASXLMODE

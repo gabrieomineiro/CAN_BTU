@@ -28,7 +28,7 @@ uvm/macros/uvm_reg_defines.svh
 uvm/macros/uvm_deprecated_defines.svh
 ./can_btu_seq_item.sv
 ./can_btu_sequence.sv
-./can_btu_coverage_collector.sv
+./can_btu_coverage.sv
 ./can_btu_driver.sv
 ./can_btu_monitor.sv
 ./can_btu_agent.sv
