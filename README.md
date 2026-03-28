@@ -249,6 +249,11 @@ Para dúvidas sobre o projeto, verifique:
 4. Os logs de síntese em `Genus Log/`
 
 ---
+## Autor
+
+Gabriel de Lima Pessoa
+
+---
 
 **Data de Criação:** Março 2026
 **Versão:** 1.0
