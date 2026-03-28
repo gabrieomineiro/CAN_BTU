@@ -75,8 +75,6 @@ O módulo CAN_BTU é responsável por:
 │   └── Schematic/          # Esquemáticos do design
 │
 ├── other code/             # Código adicional
-│   ├── can_btu_coverage_collector.sv
-│   └── CAN_BTU_GPT.sdc
 │
 ├── Make.mk                 # Makefile principal do projeto
 ├── BTU.gitignore           # Arquivo .gitignore
@@ -186,11 +184,8 @@ Os relatórios de síntese estão localizados na pasta `rpt/`:
 - **Nível RTL:** Pasta `rpt_rtl_lvl-*/`
 - **Nível Gate-Level:** Pasta `rpt_gt_lvl-*/`
 
-Para visualizar um relatório, basta abrir o arquivo `.rpt` correspondente em qualquer editor de texto:
+Para visualizar um relatório, basta abrir o arquivo `.rpt` correspondente em qualquer editor de texto.
 
-```cmd
-type rpt\rpt_gt_lvl-26-03-26\can_btu_top_summary.rpt
-```
 
 Principais relatórios:
 | Arquivo | Descrição |
@@ -208,11 +203,6 @@ Os documentos PDF estão localizados na pasta `Relatórios/`:
 
 - `gabriel_pessoa_spec_Entrega1.pdf` - Documento de especificação do projeto
 - `gabriel_pessoa_vplan_Entrega1.pdf` - Plano de verificação (Verification Plan)
-
-Para abrir os PDFs no Windows:
-```cmd
-start Relatórios\gabriel_pessoa_spec_Entrega1.pdf
-```
 
 ---
 
