@@ -244,9 +244,6 @@ Após executar uma simulação, as ondas são salvas no diretório `waves.shm/`.
 |------------|------------|
 | **Cadence Xcelium** | Simulador SystemVerilog/UVM |
 | **Genus** | Síntese lógica |
-| **Voltus** | Análise de potência |
-| **Tempus** | Análise de timing |
-| **JasperGold** | Formal verification |
 | **SimVision** | Visualização de ondas e debug |
 
 ---
