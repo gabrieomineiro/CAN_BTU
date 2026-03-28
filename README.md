@@ -250,28 +250,6 @@ Após executar uma simulação, as ondas são salvas no diretório `waves.shm/`.
 | **SimVision** | Visualização de ondas e debug |
 
 ---
-
-## Fluxo de Desenvolvimento
-
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   RTL Design    │────▶│   Simulação     │────▶│    Coverage     │
-│   (rtl/)        │     │   (UVM/tb)      │     │   (cov_reports)│
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-         │                      │                       │
-         ▼                      ▼                       ▼
-  can_btu_top.sv         make rtl/make coverage   Relatórios HTML
-                                                         │
-┌─────────────────┐     ┌─────────────────┐              │
-│    Síntese      │────▶│ Gate-Level Netlist            │
-│    (Genus)      │     │                                  │
-└─────────────────┘     └──────────────────────────────────┘
-         │
-         ▼
-  ┌──────────────────────────────────────────┐
-  │  Relatórios de Síntese (rpt/)            │
-  │  - Área, Potência, Timing, QoR           │
-  └──────────────────────────────────────────┘
 ```
 
 ---
