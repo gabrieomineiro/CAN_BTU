@@ -237,9 +237,6 @@ Após executar uma simulação, as ondas são salvas no diretório `waves.shm/`.
 | **SimVision** | Visualização de ondas e debug |
 
 ---
-```
-
----
 
 ## Contato e Suporte
 
